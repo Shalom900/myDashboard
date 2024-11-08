@@ -31,26 +31,38 @@ document.addEventListener("DOMContentLoaded", function() {
     const mainContainer = document.querySelector('main');
     const isAsideContainer = localStorage.getItem('isAsideContainer');
 
-    // Check localStorage to set initial state of the sidebar
-    if (isAsideContainer === 'expanded') {
-        // Set styles for expanded state
-        asideContainer.style.display = 'block';
-        asideContainerSmaller.style.display = 'none';
-        mainContainer.style.gridTemplateColumns = '20vw auto';
-    } else {
-        // Set styles for collapsed state
-        asideContainer.style.display = 'none';
-        asideContainerSmaller.style.display = 'block';
-        mainContainer.style.gridTemplateColumns = '5vw auto';
+    function applyResponsiveStyles() {
+        if (window.innerWidth < 600) { 
+            // Styles for screens smaller than 600px
+            asideContainerSmaller.style.display = 'block';
+            asideContainer.style.display = 'none';
+            mainContainer.style.gridTemplateColumns = '15vw 40vw 1fr';
+        } else {
+            // Check localStorage to set initial state of the sidebar for larger screens
+            if (isAsideContainer === 'expanded') {
+                asideContainer.style.display = 'block';
+                asideContainerSmaller.style.display = 'none';
+                mainContainer.style.gridTemplateColumns = '30vw 40vw 1fr';
+            } else {
+                asideContainer.style.display = 'none';
+                asideContainerSmaller.style.display = 'block';
+                mainContainer.style.gridTemplateColumns = '8vw 40vw 1fr';
+            }
+        }
     }
 
-    // Attach event listener to button
+    // Initial call to set styles on load
+    applyResponsiveStyles();
+
+    // Update styles on window resize
+    window.addEventListener('resize', applyResponsiveStyles);
+
+    // Event listener for the toggle button for all screen sizes
     document.getElementById('btn').addEventListener('click', function() {
-        // Check if asideContainer is valid before using it
         if (window.getComputedStyle(asideContainer).display === 'none') {
             asideContainer.style.display = 'block';
             asideContainerSmaller.style.display = 'none';
-            mainContainer.style.gridTemplateColumns = '20vw auto';
+            mainContainer.style.gridTemplateColumns = window.innerWidth < 600 ? '30vw 40vw 1fr' : '20vw 40vw 1fr';
             console.log("Set asideContainer to block, main grid expanded");
 
             // Save the state to localStorage
@@ -58,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             asideContainer.style.display = 'none';
             asideContainerSmaller.style.display = 'block';
-            mainContainer.style.gridTemplateColumns = '5vw auto';
+            mainContainer.style.gridTemplateColumns = window.innerWidth < 600 ? '15vw 40vw 1fr' : '8vw 40vw 1fr';
             console.log("Set asideContainer to none, main grid collapsed");
 
             // Save the state to localStorage
