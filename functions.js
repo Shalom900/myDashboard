@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (window.getComputedStyle(asideContainer).display === 'none') {
             asideContainer.style.display = 'block';
             asideContainerSmaller.style.display = 'none';
-            mainContainer.style.gridTemplateColumns = window.innerWidth < 600 ? '30vw 40vw 1fr' : '20vw 40vw 1fr';
+            mainContainer.style.gridTemplateColumns = window.innerWidth < 600 ? '35vw 40vw 1fr' : '20vw 40vw 1fr';
             console.log("Set asideContainer to block, main grid expanded");
 
             // Save the state to localStorage
