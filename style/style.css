@@ -716,7 +716,7 @@ margin: 0; /* Remove default margin */
     }
     .sectionContainer{
         width: 100%;
-        height: 30vh;
+        height: 35vh;
         
         /* background-color: #c51414; */
         
@@ -737,7 +737,7 @@ margin: 0; /* Remove default margin */
        
     }
     .moneyContainerDetails{ 
-        width: 50vw;
+        width: 55vw;
         height: 97%;
 
         /* background-color: #186fc6; */
@@ -747,7 +747,7 @@ margin: 0; /* Remove default margin */
     #navBar{
         padding: 0;
         margin-left: 0;
-        height: 92vh;
+        height: 98Gvh;
         background-color:#0060DF;
     }
     .asideContainer .navBar a:link, .asideContainer .navBar a:visited, .dashboard a:link, .dashboard a:visited, .asideContainerSmaller .navBar a:link, .asideContainerSmaller .navBar a:visited{
@@ -760,27 +760,35 @@ margin: 0; /* Remove default margin */
     
     
 }
-@media only screen and (min-width: 300px){
+@media only screen and (max-width: 320px){
+   header{
+    position: relative;
+   }
     .headerContainer{
+        /* position: relative; */
         width: 95%;
         height: 10vh;
         display: flex;
-        justify-content: space-between;
+        gap: 1.5rem;
+        justify-content:space-around;
         align-items: center;
         color: white;
+        z-index: 20;
         text-align: center;
         /* padding:0 2rem; */
     }
     .btn{
-        width: 3rem;
-        height: 90%;
+        width: 4rem;
+        height: 2rem;
         background-color: transparent;
         border: none;
+        /* position: absolute; */
+        z-index: 200;
     }
     .btn:hover{
         cursor: pointer;
-        width: 3rem;
-        height: 90%;
+        width: 4rem;
+        height: 2rem;
         border-radius: 100%;
         background-color: #dee2e6
     }
